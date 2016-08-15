@@ -65,25 +65,25 @@ public:
         //    CTxIn(COutPoint(0000000000, 4294967295), coinbase 00012a24323020466562203230313420426974636f696e2041544d7320636f6d6520746f20555341)
         //    CTxOut(empty)
         //  vMerkleTree: 12630d16a9
-        const char* pszTimestamp = "2015, January, 30, WSJ: Qatar Airways Buys $1.7 billion Stake in British Airways Operator";
+        const char* pszTimestamp = "2016, august, 15, That-s-mummy-Becky-Adlington-cries-posts-heartbreaking-Instragram-video";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1422632991, vin, vout, 0);
+        CTransaction txNew(1, 0, vin, vout, 0);
         genesis.vtx.push_back(txNew);
-        genesis.hashPrevBlock = 0;
+        genesis.hashPrevBlock = 1471280273;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1422632991;
+        genesis.nTime    = 1471280273;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 773726;
+        genesis.nNonce   = 0;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000008764d5c635c287151cabaa066526f6aac5ac885b46f4183f8c1b7c357d4"));
-        assert(genesis.hashMerkleRoot == uint256("0x4090e080fc43311842d9f4fae900d4de9dcbae0eb326a7a8bb2b3ef409f3b304"));
+        assert(hashGenesisBlock == uint256(""));
+        assert(genesis.hashMerkleRoot == uint256(""));
 
       //  vSeeds.push_back(CDNSSeedData("rat4.bitcurrency.co", "seed.bitcurrency.co"));
       //  vSeeds.push_back(CDNSSeedData("archon.darkfox.id.au", "foxy.seeds.darkfox.id.au"));
@@ -97,7 +97,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        nLastPOWBlock = 4000;
+        nLastPOWBlock = 10000;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -135,9 +135,9 @@ public:
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 54520;
+        genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000bc53a50f95a98dd38be1ea73577e73f6232ad6483c213575a589ae32f8a0"));
+        assert(hashGenesisBlock == uint256(""));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -168,13 +168,13 @@ public:
         pchMessageStart[2] = 0xa6;
         pchMessageStart[3] = 0xad;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
-        genesis.nTime = 1422632991;
+        genesis.nTime = 1471280273;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 3;
+        genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 18444;
         strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0x260043ac5d11e60031adc2444b81a079be69531c536d9f6f2b7551773e2dbc4f"));
+        assert(hashGenesisBlock == uint256(""));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
